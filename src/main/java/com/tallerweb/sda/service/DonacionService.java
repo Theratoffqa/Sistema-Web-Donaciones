@@ -1,4 +1,4 @@
 package com.tallerweb.sda.service;
 
-public class DonacionService {
+public interface DonacionService {
 }

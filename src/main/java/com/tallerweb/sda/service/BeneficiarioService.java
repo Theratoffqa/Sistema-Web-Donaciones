@@ -1,4 +1,4 @@
 package com.tallerweb.sda.service;
 
-public class BeneficiarioService {
+public interface BeneficiarioService {
 }
