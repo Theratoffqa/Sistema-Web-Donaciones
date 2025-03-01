@@ -45,6 +45,17 @@ public class SolicitudController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<Solicitud> updateSolicitud(@PathVariable Long id, @RequestBody Solicitud solicitud) {
+        Optional<Solicitud> solicitudExistente = solicitudService.getSolicitudById(id);
+        if (solicitudExistente.isPresent()) {
+            solicitud.setId(id);
+            Solicitud updatedSolicitud = solicitudService.saveSolicitud(solicitud, solicitudExistente.get().getBeneficiario());
+            return ResponseEntity.ok(updatedSolicitud);
+        }
+        return ResponseEntity.notFound().build();
+    }
+
     @DeleteMapping("/{id}")
     public void deleteSolicitud(@PathVariable Long id) {
         solicitudService.deleteSolicitud(id);

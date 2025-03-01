@@ -29,6 +29,12 @@ public class BeneficiarioController {
         return beneficiarioService.saveBeneficiario(beneficiario);
     }
 
+    @PutMapping("/{id}")
+    public Beneficiario updateBeneficiario(@PathVariable Long id, @RequestBody Beneficiario beneficiario) {
+        beneficiario.setId(id);
+        return beneficiarioService.saveBeneficiario(beneficiario);
+    }
+
     @DeleteMapping("/{id}")
     public void deleteBeneficiario(@PathVariable Long id) {
         beneficiarioService.deleteBeneficiario(id);

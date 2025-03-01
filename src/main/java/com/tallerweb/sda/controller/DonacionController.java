@@ -44,6 +44,17 @@ public class DonacionController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<Donacion> updateDonacion(@PathVariable Long id, @RequestBody Donacion donacion) {
+        Optional<Donacion> donacionExistente = donacionService.getDonacionById(id);
+        if (donacionExistente.isPresent()) {
+            donacion.setId(id);
+            Donacion updatedDonacion = donacionService.saveDonacion(donacion, donacionExistente.get().getDonante());
+            return ResponseEntity.ok(updatedDonacion);
+        }
+        return ResponseEntity.notFound().build();
+    }
+
     @DeleteMapping("/{id}")
     public void deleteDonacion(@PathVariable Long id) {
         donacionService.deleteDonacion(id);
