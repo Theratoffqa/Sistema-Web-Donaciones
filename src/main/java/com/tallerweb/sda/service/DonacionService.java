@@ -1,4 +1,7 @@
 package com.tallerweb.sda.service;
 
-public interface DonacionService {
+import org.springframework.stereotype.Service;
+
+@Service
+public class DonacionService {
 }
