@@ -114,5 +114,3 @@ public class DonanteRepositoryTest {
         assertThat(resultado.getId()).isEqualTo(1L);
     }
 }
-
-
