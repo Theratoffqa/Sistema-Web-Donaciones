@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Donaciones de Alimentos</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+    <h1>Sistema de Donaciones de Alimentos</h1>
+</header>
+
+<nav>
+    <ul>
+        <li><a href="#registrar-donante">Registrar Donante</a></li>
+        <li><a href="#registrar-beneficiario">Registrar Beneficiario</a></li>
+        <li><a href="#publicar-donacion">Publicar Donación</a></li>
+        <li><a href="#solicitar-donacion">Solicitar Donación</a></li>
+    </ul>
+</nav>
+
+<!-- Mensajes de retroalimentación -->
+<div id="mensaje" class="mensaje"></div>
+
+<!-- Formulario para registrar donantes -->
+<section id="registrar-donante" class="form-section">
+    <h2>Registrar Donante</h2>
+    <form id="formDonante">
+        <label for="nombreDonante">Nombre:</label>
+        <input type="text" id="nombreDonante" name="nombreDonante" required>
+
+        <label for="emailDonante">Email:</label>
+        <input type="email" id="emailDonante" name="emailDonante" required>
+
+        <label for="telefonoDonante">Teléfono:</label>
+        <input type="tel" id="telefonoDonante" name="telefonoDonante" required>
+
+        <button type="submit">Registrar Donante</button>
+    </form>
+</section>
+
+<!-- Formulario para registrar beneficiarios -->
+<section id="registrar-beneficiario" class="form-section">
+    <h2>Registrar Beneficiario</h2>
+    <form id="formBeneficiario">
+        <label for="nombreBeneficiario">Nombre:</label>
+        <input type="text" id="nombreBeneficiario" name="nombreBeneficiario" required>
+
+        <label for="emailBeneficiario">Email:</label>
+        <input type="email" id="emailBeneficiario" name="emailBeneficiario" required>
+
+        <label for="telefonoBeneficiario">Teléfono:</label>
+        <input type="tel" id="telefonoBeneficiario" name="telefonoBeneficiario" required>
+
+        <button type="submit">Registrar Beneficiario</button>
+    </form>
+</section>
+
+<!-- Formulario para publicar donaciones -->
+<section id="publicar-donacion" class="form-section">
+    <h2>Publicar Donación</h2>
+    <form id="formDonacion">
+        <label for="tipoAlimento">Tipo de Alimento:</label>
+        <input type="text" id="tipoAlimento" name="tipoAlimento" required>
+
+        <label for="cantidad">Cantidad:</label>
+        <input type="number" id="cantidad" name="cantidad" required>
+
+        <label for="fechaVencimiento">Fecha de Vencimiento:</label>
+        <input type="date" id="fechaVencimiento" name="fechaVencimiento" required>
+
+        <button type="submit">Publicar Donación</button>
+    </form>
+</section>
+
+<!-- Formulario para solicitar donaciones -->
+<section id="solicitar-donacion" class="form-section">
+    <h2>Solicitar Donación</h2>
+    <form id="formSolicitud">
+        <label for="nombreSolicitante">Nombre del Solicitante:</label>
+        <input type="text" id="nombreSolicitante" name="nombreSolicitante" required>
+
+        <label for="tipoAlimentoSolicitado">Tipo de Alimento Solicitado:</label>
+        <input type="text" id="tipoAlimentoSolicitado" name="tipoAlimentoSolicitado" required>
+
+        <label for="cantidadSolicitada">Cantidad Solicitada:</label>
+        <input type="number" id="cantidadSolicitada" name="cantidadSolicitada" required>
+
+        <button type="submit">Solicitar Donación</button>
+    </form>
+</section>
+
+<footer>
+    <p>&copy; 2023 Sistema de Donaciones de Alimentos</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
