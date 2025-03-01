@@ -1,6 +1,7 @@
 package com.tallerweb.sda.service.impl;
 
 import com.tallerweb.sda.model.Donacion;
+import com.tallerweb.sda.model.Donante;
 import com.tallerweb.sda.repository.DonacionRepository;
 import com.tallerweb.sda.service.DonacionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +26,13 @@ public class DonacionServiceImpl implements DonacionService {
     }
 
     @Override
-    public Donacion saveDonacion(Donacion donacion) {
+    public List<Donacion> getDonacionesByDonante(Long donanteId) {
+        return donacionRepository.findByDonanteId(donanteId);
+    }
+
+    @Override
+    public Donacion saveDonacion(Donacion donacion, Donante donante) {
+        donacion.setDonante(donante);
         return donacionRepository.save(donacion);
     }
 

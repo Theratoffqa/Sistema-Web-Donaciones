@@ -12,6 +12,10 @@ public class Donacion {
     private LocalDate fecha;
     private Double cantidad;
 
+    @ManyToOne
+    @JoinColumn(name = "donante_id")
+    private Donante donante;
+
     public Long getId() {
         return id;
     }
@@ -42,5 +46,13 @@ public class Donacion {
 
     public void setCantidad(Double cantidad) {
         this.cantidad = cantidad;
+    }
+
+    public Donante getDonante() {
+        return donante;
+    }
+
+    public void setDonante(Donante donante) {
+        this.donante = donante;
     }
 }

@@ -1,5 +1,6 @@
 package com.tallerweb.sda.service.impl;
 
+import com.tallerweb.sda.model.Beneficiario;
 import com.tallerweb.sda.model.Solicitud;
 import com.tallerweb.sda.repository.SolicitudRepository;
 import com.tallerweb.sda.service.SolicitudService;
@@ -25,7 +26,13 @@ public class SolicitudServiceImpl implements SolicitudService {
     }
 
     @Override
-    public Solicitud saveSolicitud(Solicitud solicitud) {
+    public List<Solicitud> getSolicitudesByBeneficiario(Long beneficiarioId) {
+        return solicitudRepository.findByBeneficiarioId(beneficiarioId);
+    }
+
+    @Override
+    public Solicitud saveSolicitud(Solicitud solicitud, Beneficiario beneficiario) {
+        solicitud.setBeneficiario(beneficiario);
         return solicitudRepository.save(solicitud);
     }
 
