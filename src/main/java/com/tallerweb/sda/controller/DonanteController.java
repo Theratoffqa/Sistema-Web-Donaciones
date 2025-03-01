@@ -28,7 +28,7 @@ public class DonanteController {
     }
 
     @PostMapping
-    public Donante crear(@RequestBody Donante donante) {
+    public Donante crearDonante(@RequestBody Donante donante) {
         return donanteService.saveDonante(donante);
     }
 
@@ -46,7 +46,7 @@ public class DonanteController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> eliminar(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteDonante(@PathVariable Long id) {
         if (donanteService.getDonanteById(id).isPresent()) {
             donanteService.deleteDonante(id);
             return ResponseEntity.noContent().build();
