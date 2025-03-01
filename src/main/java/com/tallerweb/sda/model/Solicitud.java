@@ -1,5 +1,6 @@
 package com.tallerweb.sda.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import java.time.LocalDate;
 
@@ -14,6 +15,7 @@ public class Solicitud {
 
     @ManyToOne
     @JoinColumn(name = "beneficiario_id")
+    @JsonBackReference
     private Beneficiario beneficiario;
 
     public Long getId() {

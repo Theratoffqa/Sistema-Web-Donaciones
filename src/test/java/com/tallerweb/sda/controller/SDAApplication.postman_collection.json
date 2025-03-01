@@ -1,0 +1,532 @@
+{
+	"info": {
+		"_postman_id": "c5dd295c-49bc-4833-9276-8471cab4c1c9",
+		"name": "SDAApplication",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "42664106"
+	},
+	"item": [
+		{
+			"name": "Donante",
+			"item": [
+				{
+					"name": "CrearDonante",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Pedro Sánchez\",\r\n    \"email\": \"pedro.sanchez@example.com\",\r\n    \"telefono\": \"1122334455\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/donantes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"donantes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ObtenerDonantes",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/donantes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"donantes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DonantePorID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/donantes/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"donantes",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ActualizarDonante",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Pedro Gómez\",\r\n    \"email\": \"pedro.gomez@example.com\",\r\n    \"telefono\": \"999777666\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/donantes/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"donantes",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BorrarDonante",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/donantes/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"donantes",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Beneficiario",
+			"item": [
+				{
+					"name": "CrearBeneficiario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Juan Pérez\",\r\n    \"email\": \"juan@example.com\",\r\n    \"telefono\": \"123456789\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/beneficiarios",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"beneficiarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ObtenerBeneficiarios",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/beneficiarios",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"beneficiarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BeneficiarioPorID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/beneficiarios/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"beneficiarios",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ActualizarBeneficiario",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Juan Actualizado\",\r\n    \"direccion\": \"null\",\r\n    \"telefono\": \"987654321\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/beneficiarios/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"beneficiarios",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BorrarBeneficiario",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/beneficiarios/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"beneficiarios",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Donacion",
+			"item": [
+				{
+					"name": "CrearDonacion",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"descripcion\": \"Donación de alimentos\",\r\n    \"cantidad\": 10\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/donaciones/donante/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"donaciones",
+								"donante",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DonacionPorID",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/donaciones/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"donaciones",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DonacionesPorIDDonante",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/donaciones/donante/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"donaciones",
+								"donante",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ActualizarDonacion",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"descripcion\": \"Donación de ropa\",\r\n    \"cantidad\": 5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/donaciones/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"donaciones",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BorrarBeneficiario",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/donaciones/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"donaciones",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Solicitud",
+			"item": [
+				{
+					"name": "CrearSolicitud",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Solicitud de Ejemplo\",\r\n    \"descripcion\": \"Descripción de la solicitud\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/solicitudes/beneficiario/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"solicitudes",
+								"beneficiario",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ObtenerSolicitudes",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/solicitudes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"solicitudes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "SolicitudporID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/solicitudes/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"solicitudes",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ActualizarSolicitud",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Solicitud Actualizada\",\r\n    \"descripcion\": \"Nueva descripción\",\r\n    \"beneficiarioId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/solicitudes/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"solicitudes",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BorrarSolicitud",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/solicitudes/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"solicitudes",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

@@ -1,5 +1,6 @@
 package com.tallerweb.sda.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import java.util.List;
 
@@ -14,6 +15,7 @@ public class Beneficiario {
     private String telefono;
 
     @OneToMany(mappedBy = "beneficiario")
+    @JsonManagedReference
     private List<Solicitud> solicitudes;
 
     public Long getId() {
