@@ -1,0 +1,6 @@
+projectKey=TallerW
+serverUrl=http://localhost:9000
+serverVersion=25.2.0.102705
+dashboardUrl=http://localhost:9000/dashboard?id=TallerW
+ceTaskId=2bb91028-600a-4306-a1f1-791bdc36c403
+ceTaskUrl=http://localhost:9000/api/ce/task?id=2bb91028-600a-4306-a1f1-791bdc36c403
