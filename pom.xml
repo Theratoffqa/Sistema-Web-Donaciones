@@ -30,7 +30,8 @@
 		<java.version>17</java.version>
 		<sonar.projectKey>ProyecTW</sonar.projectKey> 
     	<sonar.host.url>http://localhost:9000</sonar.host.url> 
-    	<sonar.login>sqp_66386f34ff8f56439d3b224f2b8d01675dacdbca</sonar.login>
+    	<!--suppress UnresolvedMavenProperty -->
+		<sonar.login>${env.TOKEN_PROYECTW}</sonar.login>
 	</properties>
 	<dependencies>
 		<dependency>
