@@ -1,4 +1,3 @@
-/* Estilos generales */
 body {
     font-family: 'Arial', sans-serif;
     margin: 0;
@@ -47,6 +46,12 @@ header h1 {
     color: #721c24;
 }
 
+.mensaje.info {
+    background-color: #cce5ff;
+    color: #004085;
+    white-space: pre-wrap;
+}
+
 .form-section {
     background-color: white;
     margin: 20px;
@@ -72,6 +77,7 @@ form input[type="email"],
 form input[type="tel"],
 form input[type="number"],
 form input[type="date"],
+form select,
 form button {
     width: 100%;
     padding: 10px;
@@ -86,7 +92,8 @@ form input[type="text"]:focus,
 form input[type="email"]:focus,
 form input[type="tel"]:focus,
 form input[type="number"]:focus,
-form input[type="date"]:focus {
+form input[type="date"]:focus,
+form select:focus {
     border-color: #4CAF50;
     outline: none;
 }
@@ -151,22 +158,6 @@ ul li:hover {
     transform: translateX(5px);
 }
 
-/* Animación de carga */
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-.loading {
-    border: 4px solid #f3f3f3;
-    border-top: 4px solid #4CAF50;
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    animation: spin 1s linear infinite;
-    margin: 20px auto;
-}
-/* Estilos para el botón de Cerrar Sesión */
 #btnCerrarSesion {
     background-color: #ff4d4d;
     color: white;
@@ -181,4 +172,53 @@ ul li:hover {
 
 #btnCerrarSesion:hover {
     background-color: #cc0000;
+}
+
+.btn-ver-donante {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 10px;
+    font-size: 12px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-ver-donante:hover {
+    background-color: #0056b3;
+}
+
+.btn-eliminar {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 10px;
+    font-size: 12px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-eliminar:hover {
+    background-color: #c82333;
+}
+
+#detallesDonante {
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+#infoDonante {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+#infoDonante p {
+    margin: 10px 0;
+    font-size: 16px;
 }

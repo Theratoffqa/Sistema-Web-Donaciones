@@ -9,36 +9,33 @@ document.addEventListener('DOMContentLoaded', function () {
     const nombreUsuarioDiv = document.getElementById('nombreUsuario');
     const nombreUsuarioTexto = document.getElementById('nombreUsuarioTexto');
     const btnCerrarSesion = document.getElementById('btnCerrarSesion');
+    const detallesDonanteSection = document.getElementById('detallesDonante');
+    const infoDonante = document.getElementById('infoDonante');
 
     let usuarioActual = null;
-    let donaciones = []; // Datos mock para donaciones
-
-    // Cargar usuarios registrados desde localStorage
+    let donaciones = [];
     let usuariosRegistrados = JSON.parse(localStorage.getItem('usuarios')) || [];
 
-    // Función para mostrar mensajes
     function mostrarMensaje(mensaje, tipo = 'success') {
         mensajeDiv.textContent = mensaje;
         mensajeDiv.className = `mensaje ${tipo}`;
         setTimeout(() => mensajeDiv.textContent = '', 3000);
     }
 
-    // Función para mostrar/ocultar secciones
     function mostrarSeccion(seccion) {
         loginSection.style.display = 'none';
         registroSection.style.display = 'none';
         opcionesSection.style.display = 'none';
         donarSection.style.display = 'none';
         recibirSection.style.display = 'none';
+        detallesDonanteSection.style.display = 'none';
         seccion.style.display = 'block';
     }
 
-    // Función para limpiar formularios
     function limpiarFormulario(formId) {
         document.getElementById(formId).reset();
     }
 
-    // Función para cerrar sesión
     function cerrarSesion() {
         usuarioActual = null;
         nombreUsuarioDiv.style.display = 'none';
@@ -46,24 +43,19 @@ document.addEventListener('DOMContentLoaded', function () {
         mostrarMensaje('Sesión cerrada correctamente');
     }
 
-    // Botón Cerrar Sesión
     btnCerrarSesion.addEventListener('click', cerrarSesion);
 
-    // Simular login
     document.getElementById('formLogin').addEventListener('submit', function (e) {
         e.preventDefault();
         const email = document.getElementById('emailLogin').value;
         const password = document.getElementById('passwordLogin').value;
 
-        // Buscar el usuario en la lista de usuarios registrados
         const usuario = usuariosRegistrados.find(user => user.email === email && user.password === password);
 
         if (usuario) {
             usuarioActual = usuario;
             mostrarMensaje('Login exitoso');
-            mostrarSeccion(opcionesSection); // Mostrar opciones después de login
-
-            // Mostrar el nombre del usuario en la parte superior derecha
+            mostrarSeccion(opcionesSection);
             nombreUsuarioTexto.textContent = usuario.nombre;
             nombreUsuarioDiv.style.display = 'block';
         } else {
@@ -71,81 +63,119 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Simular registro
     document.getElementById('formRegistro').addEventListener('submit', function (e) {
         e.preventDefault();
         const nombre = document.getElementById('nombreRegistro').value;
         const email = document.getElementById('emailRegistro').value;
+        const telefono = document.getElementById('telefonoRegistro').value;
         const password = document.getElementById('passwordRegistro').value;
+        const tipoUsuario = document.getElementById('tipoUsuario').value;
 
-        // Verificar si el usuario ya está registrado
         const usuarioExistente = usuariosRegistrados.find(user => user.email === email);
 
         if (usuarioExistente) {
             mostrarMensaje('El correo ya está registrado', 'error');
         } else {
-            // Registrar nuevo usuario
-            const nuevoUsuario = { id: usuariosRegistrados.length + 1, nombre, email, password };
+            const nuevoUsuario = { id: usuariosRegistrados.length + 1, nombre, email, telefono, password, tipoUsuario };
             usuariosRegistrados.push(nuevoUsuario);
-            localStorage.setItem('usuarios', JSON.stringify(usuariosRegistrados)); // Guardar en localStorage
+            localStorage.setItem('usuarios', JSON.stringify(usuariosRegistrados));
 
             mostrarMensaje('Registro exitoso. Por favor, inicia sesión.');
-            mostrarSeccion(loginSection); // Redirigir a login después de registro
-            limpiarFormulario('formRegistro'); // Limpiar el formulario de registro
+            mostrarSeccion(loginSection);
+            limpiarFormulario('formRegistro');
         }
     });
 
-    // Botón Donar
     document.getElementById('btnDonar').addEventListener('click', function () {
-        mostrarSeccion(donarSection); // Mostrar formulario de donación
+        mostrarSeccion(donarSection);
     });
 
-    // Botón Recibir
     document.getElementById('btnRecibir').addEventListener('click', function () {
         cargarDonaciones();
-        mostrarSeccion(recibirSection); // Mostrar lista de donaciones
+        mostrarSeccion(recibirSection);
     });
 
-    // Botón Regresar (Donar)
     document.getElementById('btnRegresarDonar').addEventListener('click', function () {
-        mostrarSeccion(opcionesSection); // Regresar al menú de opciones
+        mostrarSeccion(opcionesSection);
     });
 
-    // Botón Regresar (Recibir)
     document.getElementById('btnRegresarRecibir').addEventListener('click', function () {
-        mostrarSeccion(opcionesSection); // Regresar al menú de opciones
+        mostrarSeccion(opcionesSection);
     });
 
-    // Simular donación
+    document.getElementById('btnRegresarDetalles').addEventListener('click', function() {
+        mostrarSeccion(recibirSection);
+    });
+
     document.getElementById('formDonacion').addEventListener('submit', function (e) {
         e.preventDefault();
         const donacion = {
-            tipoAlimento: document.getElementById('tipoAlimento').value,
+            descripcion: document.getElementById('descripcion').value,
             cantidad: document.getElementById('cantidad').value,
             fechaVencimiento: document.getElementById('fechaVencimiento').value,
             donanteId: usuarioActual.id
         };
 
-        // Simular respuesta del servidor
         setTimeout(() => {
             donaciones.push(donacion);
             mostrarMensaje('Donación publicada con éxito');
-            mostrarSeccion(opcionesSection); // Volver a las opciones después de donar
-            limpiarFormulario('formDonacion'); // Limpiar el formulario de donación
+            mostrarSeccion(opcionesSection);
+            limpiarFormulario('formDonacion');
         }, 1000);
     });
 
-    // Cargar donaciones mock
     function cargarDonaciones() {
         listaDonaciones.innerHTML = '';
-        donaciones.forEach(donacion => {
+        donaciones.forEach((donacion, index) => {
             const li = document.createElement('li');
-            li.textContent = `${donacion.tipoAlimento} - Cantidad: ${donacion.cantidad} - Vence: ${donacion.fechaVencimiento}`;
+            const donante = usuariosRegistrados.find(user => user.id === donacion.donanteId);
+            const esDonacionPropia = usuarioActual && donacion.donanteId === usuarioActual.id;
+
+            li.innerHTML = `
+                ${donacion.descripcion} - Cantidad: ${donacion.cantidad} - Vence: ${donacion.fechaVencimiento}
+                <button class="btn-ver-donante" data-donante-id="${donacion.donanteId}">Ver Donante</button>
+                ${esDonacionPropia ? `<button class="btn-eliminar" data-index="${index}">Eliminar Donación</button>` : ''}
+            `;
             listaDonaciones.appendChild(li);
+        });
+
+        document.querySelectorAll('.btn-ver-donante').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const donanteId = parseInt(this.getAttribute('data-donante-id'));
+                mostrarDetallesDonante(donanteId);
+            });
+        });
+
+        document.querySelectorAll('.btn-eliminar').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const index = parseInt(this.getAttribute('data-index'));
+                eliminarDonacion(index);
+            });
         });
     }
 
-    // Manejar enlaces de navegación
+    function mostrarDetallesDonante(donanteId) {
+        const donante = usuariosRegistrados.find(user => user.id === donanteId);
+        if (donante) {
+            infoDonante.innerHTML = `
+                <p><strong>Nombre:</strong> ${donante.nombre}</p>
+                <p><strong>Email:</strong> ${donante.email}</p>
+                <p><strong>Teléfono:</strong> ${donante.telefono}</p>
+            `;
+            mostrarSeccion(detallesDonanteSection);
+        } else {
+            mostrarMensaje('Donante no encontrado', 'error');
+        }
+    }
+
+    function eliminarDonacion(index) {
+        if (confirm('¿Estás seguro de que deseas eliminar esta donación?')) {
+            donaciones.splice(index, 1);
+            mostrarMensaje('Donación eliminada correctamente');
+            cargarDonaciones();
+        }
+    }
+
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();

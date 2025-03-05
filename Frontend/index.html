@@ -43,8 +43,17 @@
         <label for="emailRegistro">Email:</label>
         <input type="email" id="emailRegistro" name="emailRegistro" required>
 
+        <label for="telefonoRegistro">Teléfono:</label>
+        <input type="tel" id="telefonoRegistro" name="telefonoRegistro" required>
+
         <label for="passwordRegistro">Contraseña:</label>
         <input type="password" id="passwordRegistro" name="passwordRegistro" required>
+
+        <label for="tipoUsuario">¿Eres Donante o Beneficiario?</label>
+        <select id="tipoUsuario" name="tipoUsuario" required>
+            <option value="donante">Donante</option>
+            <option value="beneficiario">Beneficiario</option>
+        </select>
 
         <button type="submit">Registrarse</button>
     </form>
@@ -62,8 +71,8 @@
 <section id="donar" class="form-section" style="display:none;">
     <h2>Donar Alimentos</h2>
     <form id="formDonacion">
-        <label for="tipoAlimento">Tipo de Alimento:</label>
-        <input type="text" id="tipoAlimento" name="tipoAlimento" required>
+        <label for="descripcion">Descripción:</label>
+        <input type="text" id="descripcion" name="descripcion" required>
 
         <label for="cantidad">Cantidad:</label>
         <input type="number" id="cantidad" name="cantidad" required>
@@ -81,6 +90,13 @@
     <h2>Donaciones Disponibles</h2>
     <ul id="listaDonaciones"></ul>
     <button id="btnRegresarRecibir">Regresar al Menú</button>
+</section>
+
+<!-- Nueva sección para detalles del donante -->
+<section id="detallesDonante" class="form-section" style="display:none;">
+    <h2>Detalles del Donante</h2>
+    <div id="infoDonante"></div>
+    <button id="btnRegresarDetalles">Regresar a Donaciones</button>
 </section>
 
 <footer>
