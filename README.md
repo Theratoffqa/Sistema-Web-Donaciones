@@ -86,7 +86,7 @@ stage('Empaquetado') {
 ```
 stage('Análisis Estático de Código Fuente') {
     steps {
-        bat 'mvn sonar:sonar -Dsonar.token=sqp_bf9d67b9a96e7cca16827ea74f9d917505794d49'
+        bat 'mvn sonar:sonar -Dsonar.token=Token,SonarQube'
     }
 }
 ```
@@ -104,7 +104,9 @@ stage('Pruebas Unitarias') {
 ### Pruebas de APIs
 
 **Herramienta/Framework:** Newman (Postman)
-### Integración con Jenkins:
+#### Evidencia:
+![Evidencia de Prubesas de APIs](assets/Postman)
+### Integración con Jenkins:s
 ```
 stage('Pruebas de APIs') {
     steps {
