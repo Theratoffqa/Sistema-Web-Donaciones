@@ -12,8 +12,12 @@ import java.util.Optional;
 
 @Service
 public class SolicitudServiceImpl implements SolicitudService {
+    private final SolicitudRepository solicitudRepository;
+
     @Autowired
-    private SolicitudRepository solicitudRepository;
+    public SolicitudServiceImpl(SolicitudRepository solicitudRepository) {
+        this.solicitudRepository = solicitudRepository;
+    }
 
     @Override
     public List<Solicitud> getAllSolicitudes() {
