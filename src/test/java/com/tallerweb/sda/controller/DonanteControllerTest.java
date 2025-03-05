@@ -79,9 +79,6 @@ public class DonanteControllerTest {
     @Test
     public void testDeleteDonante() throws Exception {
         Long id = 1L;
-
-        // Simular que el donante existe
-        Donante donante = new Donante();
         donante.setId(id);
         when(donanteService.getDonanteById(id)).thenReturn(Optional.of(donante));
 

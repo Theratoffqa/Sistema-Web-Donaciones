@@ -1,7 +1,6 @@
 package com.tallerweb.sda.controller;
 
 import com.tallerweb.sda.model.Solicitud;
-import com.tallerweb.sda.model.Beneficiario;
 import com.tallerweb.sda.service.SolicitudService;
 import com.tallerweb.sda.service.BeneficiarioService;
 import org.springframework.beans.factory.annotation.Autowired;
