@@ -1,0 +1,346 @@
+openapi: 3.0.3
+info:
+  title: SDAApplication
+  version: 1.0.0
+  contact: {}
+servers:
+  - url: http://localhost
+paths:
+  /api/donantes:
+    get:
+      tags:
+        - Donante
+      summary: ObtenerDonantes
+      description: ObtenerDonantes
+      operationId: obtenerdonantes
+      responses:
+        '200':
+          description: ''
+    post:
+      tags:
+        - Donante
+      summary: CrearDonante2
+      description: CrearDonante2
+      operationId: creardonante2
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: ana.mtz@example.com
+                nombre:
+                  type: string
+                  example: Ana Martínez
+                telefono:
+                  type: string
+                  example: '5566778899'
+            example:
+              email: ana.mtz@example.com
+              nombre: Ana Martínez
+              telefono: '5566778899'
+      responses:
+        '200':
+          description: ''
+  /api/donantes/1:
+    get:
+      tags:
+        - Donante
+      summary: DonantePorID
+      description: DonantePorID
+      operationId: donanteporid
+      responses:
+        '200':
+          description: ''
+    put:
+      tags:
+        - Donante
+      summary: ActualizarDonante
+      description: ActualizarDonante
+      operationId: actualizardonante
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: pedro.gome@example.com
+                nombre:
+                  type: string
+                  example: Pedro Gómez
+                telefono:
+                  type: string
+                  example: '999777656'
+            example:
+              email: pedro.gome@example.com
+              nombre: Pedro Gómez
+              telefono: '999777656'
+      responses:
+        '200':
+          description: ''
+    delete:
+      tags:
+        - Donante
+      summary: BorrarDonante
+      description: BorrarDonante
+      operationId: borrardonante
+      responses:
+        '200':
+          description: ''
+  /api/beneficiarios:
+    get:
+      tags:
+        - Beneficiario
+      summary: ObtenerBeneficiarios
+      description: ObtenerBeneficiarios
+      operationId: obtenerbeneficiarios
+      responses:
+        '200':
+          description: ''
+    post:
+      tags:
+        - Beneficiario
+      summary: CrearBeneficiario2
+      description: CrearBeneficiario2
+      operationId: crearbeneficiario2
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: juanaAlvarez@example.com
+                nombre:
+                  type: string
+                  example: Juana Alvarez
+                telefono:
+                  type: string
+                  example: '123456789'
+            example:
+              email: juanaAlvarez@example.com
+              nombre: Juana Alvarez
+              telefono: '123456789'
+      responses:
+        '200':
+          description: ''
+  /api/beneficiarios/1:
+    get:
+      tags:
+        - Beneficiario
+      summary: BeneficiarioPorID
+      description: BeneficiarioPorID
+      operationId: beneficiarioporid
+      responses:
+        '200':
+          description: ''
+    put:
+      tags:
+        - Beneficiario
+      summary: ActualizarBeneficiario
+      description: ActualizarBeneficiario
+      operationId: actualizarbeneficiario
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                direccion:
+                  type: string
+                  example: 'null'
+                nombre:
+                  type: string
+                  example: Juan Gonzales
+                telefono:
+                  type: string
+                  example: '987654321'
+            example:
+              direccion: 'null'
+              nombre: Juan Gonzales
+              telefono: '987654321'
+      responses:
+        '200':
+          description: ''
+    delete:
+      tags:
+        - Beneficiario
+      summary: BorrarBeneficiario
+      description: BorrarBeneficiario
+      operationId: borrarbeneficiario
+      responses:
+        '200':
+          description: ''
+  /api/donaciones/donante/2:
+    get:
+      tags:
+        - Donacion
+      summary: DonacionesPorIDDonante
+      description: DonacionesPorIDDonante
+      operationId: donacionesporiddonante
+      responses:
+        '200':
+          description: ''
+    post:
+      tags:
+        - Donacion
+      summary: CrearDonacion
+      description: CrearDonacion
+      operationId: creardonacion
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                cantidad:
+                  type: number
+                  example: 10
+                descripcion:
+                  type: string
+                  example: Donación de alimentos
+            example:
+              cantidad: 10
+              descripcion: Donación de alimentos
+      responses:
+        '200':
+          description: ''
+  /api/donaciones/1:
+    get:
+      tags:
+        - Donacion
+      summary: DonacionPorID
+      description: DonacionPorID
+      operationId: donacionporid
+      responses:
+        '200':
+          description: ''
+    put:
+      tags:
+        - Donacion
+      summary: ActualizarDonacion
+      description: ActualizarDonacion
+      operationId: actualizardonacion
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                cantidad:
+                  type: number
+                  example: 5
+                descripcion:
+                  type: string
+                  example: Donación de ropa
+            example:
+              cantidad: 5
+              descripcion: Donación de ropa
+      responses:
+        '200':
+          description: ''
+    delete:
+      tags:
+        - Donacion
+      summary: BorrarDonacion
+      description: BorrarDonacion
+      operationId: borrardonacion
+      responses:
+        '200':
+          description: ''
+  /api/solicitudes/beneficiario/2:
+    post:
+      tags:
+        - Solicitud
+      summary: CrearSolicitud
+      description: CrearSolicitud
+      operationId: crearsolicitud
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                descripcion:
+                  type: string
+                  example: Comida
+                nombre:
+                  type: string
+                  example: Solicitud
+            example:
+              descripcion: Comida
+              nombre: Solicitud
+      responses:
+        '200':
+          description: ''
+  /api/solicitudes:
+    get:
+      tags:
+        - Solicitud
+      summary: ObtenerSolicitudes
+      description: ObtenerSolicitudes
+      operationId: obtenersolicitudes
+      responses:
+        '200':
+          description: ''
+  /api/solicitudes/1:
+    get:
+      tags:
+        - Solicitud
+      summary: SolicitudporID
+      description: SolicitudporID
+      operationId: solicitudporid
+      responses:
+        '200':
+          description: ''
+    put:
+      tags:
+        - Solicitud
+      summary: ActualizarSolicitud
+      description: ActualizarSolicitud
+      operationId: actualizarsolicitud
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                beneficiarioId:
+                  type: number
+                  example: 1
+                cantidad:
+                  type: string
+                  example: '30'
+                descripcion:
+                  type: string
+                  example: Alitas de pollo
+                nombre:
+                  type: string
+                  example: Solicitud Actualizada
+            example:
+              beneficiarioId: 1
+              cantidad: '30'
+              descripcion: Alitas de pollo
+              nombre: Solicitud Actualizada
+      responses:
+        '200':
+          description: ''
+    delete:
+      tags:
+        - Solicitud
+      summary: BorrarSolicitud
+      description: BorrarSolicitud
+      operationId: borrarsolicitud
+      responses:
+        '200':
+          description: ''
+tags:
+  - name: Donante
+  - name: Beneficiario
+  - name: Donacion
+  - name: Solicitud
