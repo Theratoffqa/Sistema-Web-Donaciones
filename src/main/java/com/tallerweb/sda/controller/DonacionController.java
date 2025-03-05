@@ -13,11 +13,14 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/donaciones")
 public class DonacionController {
-    @Autowired
-    private DonacionService donacionService;
+    private final DonacionService donacionService;
+    private final DonanteService donanteService;
 
     @Autowired
-    private DonanteService donanteService;
+    public DonacionController(DonacionService donacionService, DonanteService donanteService) {
+        this.donacionService = donacionService;
+        this.donanteService = donanteService;
+    }
 
     @GetMapping
     public List<Donacion> getAllDonaciones() {

@@ -11,8 +11,12 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/beneficiarios")
 public class BeneficiarioController {
+    private final BeneficiarioService beneficiarioService;
+
     @Autowired
-    private BeneficiarioService beneficiarioService;
+    public BeneficiarioController(BeneficiarioService beneficiarioService) {
+        this.beneficiarioService = beneficiarioService;
+    }
 
     @GetMapping
     public List<Beneficiario> getAllBeneficiarios() {

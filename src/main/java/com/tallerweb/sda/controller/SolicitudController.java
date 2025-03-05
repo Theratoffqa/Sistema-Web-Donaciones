@@ -14,11 +14,14 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/solicitudes")
 public class SolicitudController {
-    @Autowired
-    private SolicitudService solicitudService;
+    private final SolicitudService solicitudService;
+    private final BeneficiarioService beneficiarioService;
 
     @Autowired
-    private BeneficiarioService beneficiarioService;
+    public SolicitudController(SolicitudService solicitudService, BeneficiarioService beneficiarioService) {
+        this.solicitudService = solicitudService;
+        this.beneficiarioService = beneficiarioService;
+    }
 
     @GetMapping
     public List<Solicitud> getAllSolicitudes() {
