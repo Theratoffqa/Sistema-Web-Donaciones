@@ -2,6 +2,7 @@ package com.tallerweb.sda.service.impl;
 
 import com.tallerweb.sda.model.Beneficiario;
 import com.tallerweb.sda.repository.BeneficiarioRepository;
+import com.tallerweb.sda.repository.DonacionRepository;
 import com.tallerweb.sda.service.BeneficiarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,8 +12,13 @@ import java.util.Optional;
 
 @Service
 public class BeneficiarioServiceImpl implements BeneficiarioService {
+
+    private final BeneficiarioRepository beneficiarioRepository;
+
     @Autowired
-    private BeneficiarioRepository beneficiarioRepository;
+    public BeneficiarioServiceImpl(BeneficiarioRepository beneficiarioRepository) {
+        this.beneficiarioRepository = beneficiarioRepository;
+    }
 
     @Override
     public List<Beneficiario> getAllBeneficiarios() {

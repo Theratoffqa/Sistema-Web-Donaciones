@@ -2,6 +2,7 @@ package com.tallerweb.sda.service.impl;
 
 import com.tallerweb.sda.model.Donante;
 import com.tallerweb.sda.repository.DonanteRepository;
+import com.tallerweb.sda.repository.SolicitudRepository;
 import com.tallerweb.sda.service.DonanteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,8 +12,13 @@ import java.util.Optional;
 
 @Service
 public class DonanteServiceImpl implements DonanteService {
+
+    private final DonanteRepository donanteRepository;
+
     @Autowired
-    private DonanteRepository donanteRepository;
+    public DonanteServiceImpl(DonanteRepository donanteRepository) {
+        this.donanteRepository = donanteRepository;
+    }
 
     @Override
     public List<Donante> getAllDonantes() {

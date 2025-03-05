@@ -3,6 +3,7 @@ package com.tallerweb.sda.service.impl;
 import com.tallerweb.sda.model.Donacion;
 import com.tallerweb.sda.model.Donante;
 import com.tallerweb.sda.repository.DonacionRepository;
+import com.tallerweb.sda.repository.DonanteRepository;
 import com.tallerweb.sda.service.DonacionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,8 +13,13 @@ import java.util.Optional;
 
 @Service
 public class DonacionServiceImpl implements DonacionService {
+
+    private final DonacionRepository donacionRepository;
+
     @Autowired
-    private DonacionRepository donacionRepository;
+    public DonacionServiceImpl(DonacionRepository donacionRepository) {
+        this.donacionRepository = donacionRepository;
+    }
 
     @Override
     public List<Donacion> getAllDonaciones() {
