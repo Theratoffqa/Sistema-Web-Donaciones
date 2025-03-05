@@ -9,6 +9,7 @@ class SdaApplicationTests {
 
 	@Test
 	void contextLoads() {
+		// Por el momento no se harán pruebas de integración
 	}
 
 }

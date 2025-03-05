@@ -12,9 +12,12 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/donantes")
 public class DonanteController {
+    private final DonanteService donanteService;
 
     @Autowired
-    private DonanteService donanteService;
+    public DonanteController(DonanteService donanteService) {
+        this.donanteService = donanteService;
+    }
 
     @GetMapping
     public List<Donante> obtenerTodos() {

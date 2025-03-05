@@ -1,7 +1,6 @@
 package com.tallerweb.sda.controller;
 
 import com.tallerweb.sda.model.Solicitud;
-import com.tallerweb.sda.model.Beneficiario;
 import com.tallerweb.sda.service.SolicitudService;
 import com.tallerweb.sda.service.BeneficiarioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,11 +13,14 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/solicitudes")
 public class SolicitudController {
-    @Autowired
-    private SolicitudService solicitudService;
+    private final SolicitudService solicitudService;
+    private final BeneficiarioService beneficiarioService;
 
     @Autowired
-    private BeneficiarioService beneficiarioService;
+    public SolicitudController(SolicitudService solicitudService, BeneficiarioService beneficiarioService) {
+        this.solicitudService = solicitudService;
+        this.beneficiarioService = beneficiarioService;
+    }
 
     @GetMapping
     public List<Solicitud> getAllSolicitudes() {

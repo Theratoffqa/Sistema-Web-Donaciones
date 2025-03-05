@@ -11,8 +11,13 @@ import java.util.Optional;
 
 @Service
 public class DonanteServiceImpl implements DonanteService {
+
+    private final DonanteRepository donanteRepository;
+
     @Autowired
-    private DonanteRepository donanteRepository;
+    public DonanteServiceImpl(DonanteRepository donanteRepository) {
+        this.donanteRepository = donanteRepository;
+    }
 
     @Override
     public List<Donante> getAllDonantes() {

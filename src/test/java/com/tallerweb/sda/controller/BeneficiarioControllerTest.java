@@ -26,6 +26,13 @@ class BeneficiarioControllerTest {
     }
 
     @Test
+    void testConstructor() {
+        BeneficiarioService serviceMock = mock(BeneficiarioService.class);
+        BeneficiarioController controller = new BeneficiarioController(serviceMock);
+        Assertions.assertNotNull(controller);
+    }
+
+    @Test
     void testGetAllBeneficiarios() {
         Beneficiario beneficiarioMock = new Beneficiario();
         when(beneficiarioService.getAllBeneficiarios()).thenReturn(List.of(beneficiarioMock));
@@ -44,6 +51,14 @@ class BeneficiarioControllerTest {
     }
 
     @Test
+    void testGetBeneficiarioByIdNotFound() {
+        when(beneficiarioService.getBeneficiarioById(anyLong())).thenReturn(Optional.empty());
+
+        Optional<Beneficiario> result = beneficiarioController.getBeneficiarioById(1L);
+        Assertions.assertTrue(result.isEmpty());
+    }
+
+    @Test
     void testCreateBeneficiario() {
         Beneficiario beneficiarioMock = new Beneficiario();
         when(beneficiarioService.saveBeneficiario(any(Beneficiario.class))).thenReturn(beneficiarioMock);
@@ -53,10 +68,24 @@ class BeneficiarioControllerTest {
     }
 
     @Test
+    void testUpdateBeneficiario() {
+        Beneficiario beneficiarioMock = new Beneficiario();
+        beneficiarioMock.setId(1L);
+
+        when(beneficiarioService.saveBeneficiario(any(Beneficiario.class))).thenReturn(beneficiarioMock);
+
+        Beneficiario result = beneficiarioController.updateBeneficiario(1L, new Beneficiario());
+        Assertions.assertEquals(1L, result.getId());
+        verify(beneficiarioService, times(1)).saveBeneficiario(any(Beneficiario.class));
+    }
+
+    @Test
     void testDeleteBeneficiario() {
         doNothing().when(beneficiarioService).deleteBeneficiario(anyLong());
 
         beneficiarioController.deleteBeneficiario(1L);
         verify(beneficiarioService, times(1)).deleteBeneficiario(1L);
     }
+
+
 }

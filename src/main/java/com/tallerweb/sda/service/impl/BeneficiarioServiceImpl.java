@@ -11,8 +11,13 @@ import java.util.Optional;
 
 @Service
 public class BeneficiarioServiceImpl implements BeneficiarioService {
+
+    private final BeneficiarioRepository beneficiarioRepository;
+
     @Autowired
-    private BeneficiarioRepository beneficiarioRepository;
+    public BeneficiarioServiceImpl(BeneficiarioRepository beneficiarioRepository) {
+        this.beneficiarioRepository = beneficiarioRepository;
+    }
 
     @Override
     public List<Beneficiario> getAllBeneficiarios() {
