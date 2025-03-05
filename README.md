@@ -91,8 +91,9 @@ stage('Análisis Estático de Código Fuente') {
 }
 ```
 ### Pruebas Unitarias
-
 **Herramienta/Framework:** JUnit (integrado en Maven)
+#### Evidencia:
+![Evidencia dUnitarias](assets/PruUni.png)
 ### Integración con Jenkins:
 ```
 stage('Pruebas Unitarias') {
@@ -105,7 +106,7 @@ stage('Pruebas Unitarias') {
 
 **Herramienta/Framework:** Newman (Postman)
 #### Evidencia:
-![Evidencia de Prubesas de APIs](assets/Postman)
+![Evidencia de Prubesas de APIs](assets/Postman.png)
 ### Integración con Jenkins:s
 ```
 stage('Pruebas de APIs') {
