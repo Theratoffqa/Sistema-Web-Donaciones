@@ -31,7 +31,7 @@
 		<sonar.projectKey>ProyecTW</sonar.projectKey> 
     	<sonar.host.url>http://localhost:9000</sonar.host.url> 
     	<!--suppress UnresolvedMavenProperty -->
-		<sonar.login>${env.TOKEN_PROYECTW}</sonar.login>
+		<sonar.token>${env.TOKEN_PROYECTW}</sonar.token>
 	</properties>
 	<dependencies>
 		<dependency>
