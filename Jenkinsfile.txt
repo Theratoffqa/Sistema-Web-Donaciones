@@ -1,0 +1,53 @@
+pipeline {
+    agent any
+    tools {
+        maven 'Maven 3.9.9' 
+        git 'Git'
+    }
+    stages {
+
+        stage('Update Code') {
+            steps {
+                git url: 'https://github.com/CarlosAscueOrosco/TallerW.git/', branch: 'main'
+            }
+        }
+        stage('Gestión de Dependencias') {
+            steps {
+                bat 'mvn dependency:resolve'
+            }
+        }
+        stage('Build') {
+            steps {
+                bat 'mvn compile'
+            }
+        }
+        stage('Empaquetado') {
+            steps {
+                bat 'mvn package -DskipTests'
+            }
+        }
+        stage('Pruebas Unitarias') {
+            steps {
+                bat 'mvn test'
+            }
+        }
+        stage('Análisis Estático de Código Fuente') {
+            steps {
+                bat 'mvn sonar:sonar -Dsonar.token=sqa_02c5d781146418aa77a768dbbad4ea16d9f651cc'
+            }
+        }
+        
+        stage('Iniciando Backend') {
+            steps {
+                bat 'start /B java -jar target/ProyecTW-0.0.1-SNAPSHOT.jar' // Reemplaza con tu comando correcto
+                bat 'ping -n 10 127.0.0.1 > nul'
+            }
+        }
+        stage('Pruebas de APIs') {
+            steps {
+                // Asegúrate de que newman esté instalado y ejecuta las pruebas
+                bat '"C:\\Users\\ikuto\\AppData\\Roaming\\npm\\newman.cmd" run src/test/java/com/tallerweb/sda/controller/SDAApplication.postman_collection.json'
+            }
+        }
+    }
+}
