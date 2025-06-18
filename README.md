@@ -1,117 +1,37 @@
-# Índice
+# TallerW – Sistema Web de Donaciones
 
-1. [Web Donaciones](#web-donaciones)
-2. [Equipo de Trabajo](#equipo-de-trabajo)
-3. [README - Web Donaciones](#readme---web-donaciones)
-   - [Propósito del Software](#propósito-del-software)
-   - [Alcance](#alcance)
-   - [Principales Funciones](#principales-funciones)
-4. [Integración con Jenkins Pipeline](#integración-con-jenkins-pipeline)
-   - [Construcción Automática](#construcción-automática)
-   - [Análisis Estático](#análisis-estático)
-   - [Pruebas Unitarias](#pruebas-unitarias)
-   - [Pruebas Funcionales](#pruebas-funcionales)
-   - [Pruebas de Rendimiento](#pruebas-de-rendimiento)
-  5. [Gestión de GitHub Issues](#gestión-de-github-issues)
+Este proyecto consiste en una plataforma web desarrollada en Java que permite gestionar el proceso de donación de alimentos entre donantes y beneficiarios. Fue desarrollado como parte de un trabajo colaborativo, implementando buenas prácticas de arquitectura backend, pruebas automatizadas e integración continua.
 
-# Web Donaciones
-- **Fecha**: [05/03/2025]
+## ✍️ Contribuciones personales (Theratoffqa)
 
-## Equipo de Trabajo
-- [Carlos Ascue Orosco](https://github.com/CarlosAscueOrosco)
-- [Pedro Emanuel Barazorda Medrano](https://github.com/Theratoffqa)
+- Implementación completa de la lógica CRUD para Donantes, Beneficiarios, Donaciones y Solicitudes.
+- Desarrollo de controladores (`Controller`), modelos (`Model`), repositorios (`Repository`) e interfaces de servicio (`Service`).
+- Configuración inicial del proyecto con conexión a **MySQL**.
+- Refactorización del backend para desacoplar la lógica con interfaces e inyecciones de dependencias.
+- Integración de pruebas unitarias y de integración:
+  - Tests para controladores y servicios (`ControllerTest`, `ServiceTest`)
+  - Tests para repositorios (`RepositoryTest`)
+- Configuración y mantenimiento del pipeline CI/CD con **Jenkins**:
+  - Jenkinsfile para compilación automática y despliegue
+  - Plugins para cobertura de código
+  - Configuración de análisis estático con **SonarQube**
+  - Pruebas funcionales automatizadas con **Postman/Newman**
+- Solución de errores de mantenimiento, optimización del código y mejoras de seguridad (cambio de tokens, puertos, encoding UTF-8, limpieza de librerías).
 
-# README - Web Donaciones
+## 🔧 Tecnologías utilizadas
 
-## Propósito del Software
-El objetivo de **Web Donaciones** es conectar de manera efectiva y sencilla a donantes de comida con beneficiarios que tienen la necesidad de estos. La plataforma busca facilitar la donación de alimentos, reducir el desperdicio y asegurar que las personas necesitadas reciban ayuda de manera rápida y eficiente.
+- Java 17  
+- Spring Boot  
+- Maven  
+- MySQL  
+- Jenkins  
+- SonarQube  
+- JUnit  
+- Postman / Newman  
+- Git
 
-## Alcance
-El alcance del proyecto incluye:
-- Desarrollo de una plataforma web que permita a los donantes registrar y ofrecer alimentos.
-- Creación de un sistema para que los beneficiarios puedan solicitar y recibir donaciones.
-- Implementación de un medio de comuniación para conectar donantes y beneficiarios cercanos.
+## 📁 Repositorio original
 
-## Principales funciones 
-1. Iniciar Sesión
-Permite a los usuarios (donantes y beneficiarios) acceder a la plataforma con sus credenciales.
+[github.com/CarlosAscueOrosco/TallerW](https://github.com/CarlosAscueOrosco/TallerW)
 
-![Interfaz de Inicio de Sesión](assets/Login.png)
-
-### 2. Registrarse
-Los nuevos usuarios pueden crear una cuenta para comenzar a usar la plataforma.
-
-![Interfaz de Registro](assets/Registro.png)
-
-### 3. Menú de Opciones
-Una vez autenticados, los usuarios pueden navegar por las diferentes opciones de la plataforma.
-
-![Menú de Opciones](assets/Menu.png)
-
-### 4. Donar
-Los donantes pueden registrar y ofrecer alimentos para donación.
-
-![Interfaz de Donar](assets/Donar.png)
-
-### 5. Donaciones Disponibles
-Los beneficiarios pueden ver las donaciones disponibles y solicitarlas.
-![Interfaz de Donaciones Disponibles](assets/Donaciones.png)
-
-## Integración con Jenkins Pipeline
-### Construcción Automática
-**Herramienta/Framework:** Maven 3.9.9
-#### Comandos:
-```bash
-mvn compile
-mvn package 
-```
-#### Integración con Jenkins:
-```
-stage('Build') {
-    steps {
-        bat 'mvn compile'
-    }
-}
-stage('Empaquetado') {
-    steps {
-        bat 'mvn package -DskipTests'
-    }
-}
-```
-### Análisis estático
-**Herramienta/Framework:** SonarQube - Sonar Scanner
-#### Evidencia:
-![Evidencia de Análisis Estático](assets/sonar.jpeg)
-### Integración con Jenkins:
-```
-stage('Análisis Estático de Código Fuente') {
-    steps {
-        bat 'mvn sonar:sonar -Dsonar.token=Token,SonarQube'
-    }
-}
-```
-### Pruebas Unitarias
-**Herramienta/Framework:** JUnit (integrado en Maven)
-#### Evidencia:
-![Evidencia dUnitarias](assets/PruUni.png)
-### Integración con Jenkins:
-```
-stage('Pruebas Unitarias') {
-    steps {
-        bat 'mvn test'
-    }
-}
-```
-### Pruebas de APIs
-
-**Herramienta/Framework:** Newman (Postman)
-#### Evidencia:
-![Evidencia de Prubesas de APIs](assets/Postman.png)
-### Integración con Jenkins:s
-```
-stage('Pruebas de APIs') {
-    steps {
-        bat '"C:\\Users\\ikuto\\AppData\\Roaming\\npm\\newman.cmd" run src/test/java/com/tallerweb/sda/controller/SDAApplication.postman_collection.json'
-    }
-}
-```
+---
